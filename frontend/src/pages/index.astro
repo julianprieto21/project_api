@@ -1,0 +1,29 @@
+---
+import App from "../components/App";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Games API</title>
+  </head>
+  <body>
+    <App client:only />
+  </body>
+</html>
+
+<style>
+  :root {
+    color-scheme: light dark;
+    background-color: #242424;
+  }
+  body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-height: 100vh;
+  }
+</style>
