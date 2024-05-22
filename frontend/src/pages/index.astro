@@ -1,5 +1,12 @@
 ---
 import App from "../components/App";
+import UserIcon from "../components/icons/UserIcon.astro";
+
+// const res = await fetch(
+//   "https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/"
+// );
+// const data = await res.json();
+// console.log(data.response.ranks);
 ---
 
 <html lang="es">
@@ -11,6 +18,7 @@ import App from "../components/App";
     <title>Games API</title>
   </head>
   <body>
+    <UserIcon />
     <App client:only />
   </body>
 </html>
@@ -25,5 +33,6 @@ import App from "../components/App";
     display: flex;
     place-items: center;
     min-height: 100vh;
+    position: relative;
   }
 </style>

@@ -4,7 +4,7 @@ export const Game = ({ game }: { game: any }) => {
       <picture className="relative">
         <a href={`/games/${game.id}`}>
           <img
-            className="rounded-lg aspect-video hover:scale-105 transition"
+            className="rounded-lg aspect-video md:hover:scale-105 transition"
             src={game.image}
             alt="Juego"
           />
