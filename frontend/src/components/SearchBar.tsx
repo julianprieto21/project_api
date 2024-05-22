@@ -16,7 +16,7 @@ export const SearchBar = () => {
     <input
       type="text"
       placeholder="Buscar un juego..."
-      className="w-[600px] h-14 rounded-md bg-neutral-700 m-8 px-3 focus:outline-none"
+      className="w-full h-14 rounded-md bg-neutral-700 my-8 px-3 focus:outline-none"
       onChange={(e) => handleChange(e.target.value)}
     />
   );
