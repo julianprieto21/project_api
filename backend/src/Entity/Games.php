@@ -19,20 +19,20 @@ class Games
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $developers = null;
+    #[ORM\Column(type: Types::ARRAY)]
+    private array $developers = [];
 
     #[ORM\Column(type: Types::ARRAY)]
-    private array $storesId = [];
+    private array $genres = [];
 
     #[ORM\Column(length: 255)]
-    private ?string $genre = null;
+    private ?string $imageUrl = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $releaseDate = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    #[ORM\Column]
+    private array $storeIds = [];
 
     public function getId(): ?int
     {
@@ -51,38 +51,38 @@ class Games
         return $this;
     }
 
-    public function getDevelopers(): ?array
+    public function getDevelopers(): array
     {
         return $this->developers;
     }
 
-    public function setDevelopers(?array $developers): static
+    public function setDevelopers(array $developers): static
     {
         $this->developers = $developers;
 
         return $this;
     }
 
-    public function getStoresId(): array
+    public function getGenres(): array
     {
-        return $this->storesId;
+        return $this->genres;
     }
 
-    public function setStoresId(array $storesId): static
+    public function setGenres(array $genres): static
     {
-        $this->storesId = $storesId;
+        $this->genres = $genres;
 
         return $this;
     }
 
-    public function getGenre(): ?string
+    public function getImageUrl(): ?string
     {
-        return $this->genre;
+        return $this->imageUrl;
     }
 
-    public function setGenre(string $genre): static
+    public function setImageUrl(string $imageUrl): static
     {
-        $this->genre = $genre;
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }
@@ -99,14 +99,14 @@ class Games
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getStoreIds(): array
     {
-        return $this->image;
+        return $this->storeIds;
     }
 
-    public function setImage(string $image): static
+    public function setStoreIds(array $storeIds): static
     {
-        $this->image = $image;
+        $this->storeIds = $storeIds;
 
         return $this;
     }

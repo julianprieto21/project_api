@@ -19,7 +19,7 @@ class Stores
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $base_url = null;
+    private ?string $baseUrl = null;
 
     #[ORM\Column(length: 3)]
     private ?string $currency = null;
@@ -43,12 +43,12 @@ class Stores
 
     public function getBaseUrl(): ?string
     {
-        return $this->base_url;
+        return $this->baseUrl;
     }
 
-    public function setBaseUrl(string $base_url): static
+    public function setBaseUrl(string $baseUrl): static
     {
-        $this->base_url = $base_url;
+        $this->baseUrl = $baseUrl;
 
         return $this;
     }

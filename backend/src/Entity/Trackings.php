@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\TrackingsRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TrackingsRepository::class)]
@@ -17,13 +16,13 @@ class Trackings
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $user_id = null;
+    private ?int $userId = null;
 
     #[ORM\Column]
-    private ?int $game_id = null;
+    private ?int $gameId = null;
 
-    #[ORM\Column(type: Types::OBJECT, nullable: true)]
-    private ?object $record = null;
+    #[ORM\Column(nullable: true)]
+    private ?array $record = null;
 
     public function getId(): ?int
     {
@@ -32,34 +31,34 @@ class Trackings
 
     public function getUserId(): ?int
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
-    public function setUserId(int $user_id): static
+    public function setUserId(int $userId): static
     {
-        $this->user_id = $user_id;
+        $this->userId = $userId;
 
         return $this;
     }
 
     public function getGameId(): ?int
     {
-        return $this->game_id;
+        return $this->gameId;
     }
 
-    public function setGameId(int $game_id): static
+    public function setGameId(int $gameId): static
     {
-        $this->game_id = $game_id;
+        $this->gameId = $gameId;
 
         return $this;
     }
 
-    public function getRecord(): ?object
+    public function getRecord(): ?array
     {
         return $this->record;
     }
 
-    public function setRecord(?object $record): static
+    public function setRecord(?array $record): static
     {
         $this->record = $record;
 
