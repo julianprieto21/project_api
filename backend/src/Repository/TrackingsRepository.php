@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Game;
+use App\Entity\Trackings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Game>
+ * @extends ServiceEntityRepository<Trackings>
  */
-class GameRepository extends ServiceEntityRepository
+class TrackingsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Game::class);
+        parent::__construct($registry, Trackings::class);
     }
 
 //    /**
-//     * @return Game[] Returns an array of Game objects
+//     * @return Trackings[] Returns an array of Trackings objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('g.id', 'ASC')
+//            ->orderBy('t.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Game
+//    public function findOneBySomeField($value): ?Trackings
 //    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()

@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\GameRepository;
+use App\Repository\GamesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: GameRepository::class)]
+#[ORM\Entity(repositoryClass: GamesRepository::class)]
 #[ApiResource]
-class Game
+class Games
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
