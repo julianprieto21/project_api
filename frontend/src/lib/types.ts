@@ -6,3 +6,12 @@ export type AppType = {
   isUser: boolean;
   setIsUser: (isUser: boolean) => void;
 };
+
+export type GameData = {
+  name: string;
+  developers: string[];
+  genres: string[];
+  imageUrl: string;
+  releaseDate: string;
+  storeIds: { [key: number]: string };
+};
