@@ -1,5 +1,6 @@
 export async function getData(query: string) {
-  const res = await fetch("http://127.0.0.1:8000/api/games");
+  const databaseUrl = import.meta.env.PUBLIC_DATABASE_URL;
+  const res = await fetch(`${databaseUrl}/api/games`);
   const data = await res.json();
   const games = data["hydra:member"];
   const filteredDate = games.filter((game: { name: string }) => {
