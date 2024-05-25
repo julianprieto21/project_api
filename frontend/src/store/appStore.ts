@@ -11,6 +11,8 @@ export const useAppStore = create<AppType>()(
       setIsAdmin: (isAdmin) => set({ isAdmin }),
       isUser: false,
       setIsUser: (isUser) => set({ isUser }),
+      user: "",
+      setUser: (user) => set({ user }),
     }),
     { name: "app-store" }
   )

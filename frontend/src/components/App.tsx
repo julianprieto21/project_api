@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { getData } from "../lib/data";
 import { Game } from "./Game";
-import UserIcon from "./icons/UserIcon.astro";
+import { useAppStore } from "../store/appStore";
 
 export default function App() {
   const [data, setData] = useState<any[]>([]);
@@ -10,6 +10,7 @@ export default function App() {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get("q") ?? "";
   });
+  const { isLogin, user } = useAppStore((state) => state);
 
   const handleChange = useDebouncedCallback((value: string) => {
     setSearch(value);
@@ -28,6 +29,11 @@ export default function App() {
     <main className="w-[1280px] h-screen my-0 mx-auto p-8 text-center">
       <section className="overflow-hidden inset-0 fixed h-fit z-10 bg-background pt-4">
         <h1 className="text-white text-6xl pt-10">Games API</h1>
+        <h2>
+          {isLogin
+            ? `Bienvenido ${user}`
+            : `Bienvenido, por favor inicie sesion`}
+        </h2>
         <input
           type="text"
           placeholder="Buscar un juego..."

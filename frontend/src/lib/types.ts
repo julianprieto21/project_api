@@ -5,6 +5,8 @@ export type AppType = {
   setIsAdmin: (isAdmin: boolean) => void;
   isUser: boolean;
   setIsUser: (isUser: boolean) => void;
+  user: string;
+  setUser: (user: string) => void;
 };
 
 export type GameData = {
