@@ -1,38 +1,10 @@
 ---
 import App from "../components/App";
-import UserIcon from "../components/icons/UserIcon.astro";
-
-// const res = await fetch(
-//   "https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/"
-// );
-// const data = await res.json();
-// console.log(data.response.ranks);
+import LoginBtn from "../components/LoginBtn.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Games API</title>
-  </head>
-  <body>
-    <UserIcon />
-    <App client:only />
-  </body>
-</html>
-
-<style>
-  :root {
-    color-scheme: light dark;
-    background-color: #242424;
-  }
-  body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-height: 100vh;
-    position: relative;
-  }
-</style>
+<Layout>
+  <LoginBtn />
+  <App client:only />
+</Layout>
