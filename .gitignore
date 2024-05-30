@@ -23,6 +23,7 @@ frontend/yarn-debug.log*
 frontend/yarn-error.log*
 frontend/pnpm-debug.log*
 frontend/pnpm-lock.yaml
+frontend/package-lock.json
 frontend/.vscode
 
 
