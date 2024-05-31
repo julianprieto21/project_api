@@ -38,7 +38,7 @@ export const server = {
           }
           return response.json();
         })
-        .then((data) => console.log(data))
+        .then((data) => console.log("Sign in successful"))
         .catch((error) => console.error(error));
       return;
     },
@@ -61,7 +61,9 @@ export const server = {
         options
       );
       const data = await response.json();
-      const userData = data["hydra:member"][0];
+      const [userData] = data["hydra:member"].filter((u: { name: string }) => {
+        return u.name === user;
+      });
       const isPasswordCorrect = await bcrypt.compare(
         password,
         userData.password

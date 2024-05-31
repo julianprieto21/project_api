@@ -3,10 +3,7 @@ import { useAppStore } from "../store/appStore";
 import { useState } from "react";
 
 export const LoginForm = () => {
-  const { setIsLogin, setUser, setIsAdmin, setIsUser, isLogin } = useAppStore(
-    (state) => state
-  );
-  const [logFailed, setLogFailed] = useState(false);
+  const { setIsLogin, setUser, isLogin } = useAppStore((state) => state);
   return (
     <section className="flex flex-col w-96 h-fit rounded-xl shadow-lg bg-neutral-900 gap-4">
       <form
@@ -17,19 +14,13 @@ export const LoginForm = () => {
           if (isLogin) {
             setIsLogin(false);
             setUser("");
-            setIsAdmin(false);
-            setIsUser(false);
           }
           const formData = new FormData(e.target as HTMLFormElement);
           const result = await actions.login(formData);
           if (result[0]) {
-            setLogFailed(false);
             setIsLogin(true);
             setUser(result[1]);
-            if (result[1] === "Julian Prieto") setIsAdmin(true);
-            else setIsUser(true);
           } else {
-            setLogFailed(true);
           }
         }}
       >
