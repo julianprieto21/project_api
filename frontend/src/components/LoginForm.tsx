@@ -14,48 +14,28 @@ export const LoginForm = () => {
         role="form"
         onSubmit={async (e) => {
           e.preventDefault();
+          if (isLogin) {
+            setIsLogin(false);
+            setUser("");
+            setIsAdmin(false);
+            setIsUser(false);
+          }
           const formData = new FormData(e.target as HTMLFormElement);
           const result = await actions.login(formData);
           if (result[0]) {
-            console.log(result[0]);
             setLogFailed(false);
             setIsLogin(true);
             setUser(result[1]);
             if (result[1] === "Julian Prieto") setIsAdmin(true);
             else setIsUser(true);
           } else {
-            console.log(result[1]);
             setLogFailed(true);
           }
         }}
       >
         <h2 className="text-4xl font-base text-center py-4 px-3">LOG IN</h2>
 
-        <input
-          type="text"
-          id="l-user"
-          name="user"
-          autoComplete="username"
-          className="p-2 mx-3 rounded-md"
-          placeholder="Username"
-          required
-        />
-        <input
-          type="password"
-          id="l-password"
-          name="password"
-          autoComplete="current-password"
-          className="p-2 mx-3 rounded-md"
-          placeholder="Password"
-          required
-        />
-        <button
-          type="submit"
-          className={`text-left mx-4 w-fit border px-2 py-1 rounded-md border-neutral-600 text-neutral-500 hover:text-neutral-100 transition`}
-        >
-          Login
-        </button>
-        {logFailed ? (
+        {!isLogin ? (
           <span className="top-16 w-full text-center absolute text-red-500 font-normal text-xs">
             Nombre de usuario o contraseña incorrectos
           </span>
@@ -64,6 +44,34 @@ export const LoginForm = () => {
             Sesión iniciada correctamente!
           </span>
         )}
+        <input
+          type="text"
+          id="l-user"
+          name="user"
+          autoComplete="username"
+          className="p-2 mx-3 rounded-md disabled:cursor-not-allowed"
+          placeholder="Username"
+          disabled={isLogin}
+          required
+        />
+        <input
+          type="password"
+          id="l-password"
+          name="password"
+          autoComplete="current-password"
+          className="p-2 mx-3 rounded-md disabled:cursor-not-allowed"
+          placeholder="Password"
+          disabled={isLogin}
+          required
+        />
+        <button
+          type="submit"
+          className={`text-left mx-4 w-fit border px-2 py-1 rounded-md border-neutral-600 text-neutral-500 ${
+            isLogin ? "hover:text-red-500" : "hover:text-neutral-100"
+          } transition`}
+        >
+          {isLogin ? "Logout" : "Login"}
+        </button>
       </form>
       <hr className="border-t border-neutral-800 mx-3" />
       <form
