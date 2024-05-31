@@ -1,10 +1,12 @@
 ---
 import { LoginForm } from "../components/LoginForm";
+import BackBtn from "../components/icons/BackBtn.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
   <main class="grid place-content-center size-full">
+    <BackBtn />
     <LoginForm client:visible />
   </main>
 </Layout>
