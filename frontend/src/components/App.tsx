@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { getData } from "../lib/data";
+import { getGames } from "../lib/data";
 import { Game } from "./Game";
 import { useAppStore } from "../store/appStore";
 
 export default function App() {
   const [data, setData] = useState<any[]>([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
   const [search, setSearch] = useState<string>(() => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get("q") ?? "";
@@ -17,12 +18,22 @@ export default function App() {
   }, 300);
 
   useEffect(() => {
+    getGames().then((res) => setData(res));
+  }, []);
+
+  useEffect(() => {
     const pathname = search === "" ? window.location.pathname : `?q=${search}`;
     window.history.pushState({}, "", pathname);
   }, [search]);
 
   useEffect(() => {
-    getData(search).then((res) => setData(res));
+    const filteredData = data.filter((game) => {
+      return game.name.toLowerCase().includes(search.toLowerCase());
+    });
+    const orderedData = filteredData.sort(
+      (a: { name: string }, b: { name: any }) => a.name.localeCompare(b.name)
+    );
+    setFilteredData(orderedData);
   }, [search]);
 
   return (
@@ -42,7 +53,7 @@ export default function App() {
         />
       </section>
       <section className="grid place-content-center overflow-y-auto mt-44 md:mt-48 pb-10">
-        {data.map((game) => (
+        {filteredData.map((game) => (
           <Game key={game.id} game={game} />
         ))}
       </section>
