@@ -18,7 +18,17 @@ export default function App() {
   }, 300);
 
   useEffect(() => {
-    getGames().then((res) => setData(res));
+    const getData = async () => {
+      const res = await getGames();
+      setData(res);
+
+      setFilteredData(
+        res.sort((a: { name: string }, b: { name: any }) =>
+          a.name.localeCompare(b.name)
+        )
+      );
+    };
+    getData();
   }, []);
 
   useEffect(() => {
