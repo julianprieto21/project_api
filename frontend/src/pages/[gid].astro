@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro";
 
 const { gid } = Astro.params;
 const res = await fetch(`http://127.0.0.1:8000/api/games/${gid}`);
