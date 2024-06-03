@@ -20,16 +20,26 @@ export default function App() {
   useEffect(() => {
     const getData = async () => {
       const res = await getGames();
+      localStorage.setItem("data", JSON.stringify(res));
       setData(res);
-
-      setFilteredData(
-        res.sort((a: { name: string }, b: { name: any }) =>
-          a.name.localeCompare(b.name)
-        )
-      );
     };
-    getData();
+
+    const localData = localStorage.getItem("data");
+    if (localData) {
+      const data = JSON.parse(localData.toString());
+      setData(data);
+    } else {
+      getData();
+    }
   }, []);
+
+  useEffect(() => {
+    setFilteredData(
+      data.sort((a: { name: string }, b: { name: any }) =>
+        a.name.localeCompare(b.name)
+      )
+    );
+  }, [data]);
 
   useEffect(() => {
     const pathname = search === "" ? window.location.pathname : `?q=${search}`;
