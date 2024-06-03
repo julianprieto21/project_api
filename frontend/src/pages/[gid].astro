@@ -6,6 +6,6 @@ const res = await fetch(`http://127.0.0.1:8000/api/games/${gid}`);
 const game = await res.json();
 ---
 
-<Layout>
+<Layout title=`Games API | ${game.name}`>
   <main>{game.name}</main>
 </Layout>
