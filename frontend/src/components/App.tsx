@@ -57,7 +57,7 @@ export default function App() {
   }, [search]);
 
   return (
-    <main className="w-[1280px] h-screen my-0 mx-auto p-8 text-center">
+    <main className="w-full sm:w-[1280px] h-screen my-0 mx-auto p-2 sm:p-8 text-center">
       <section className="overflow-hidden inset-0 fixed h-fit z-10 bg-background pt-4">
         <h1 className="text-white text-6xl pt-10">Games API</h1>
         <h2>
@@ -72,7 +72,7 @@ export default function App() {
           onChange={(e) => handleChange(e.target.value)}
         />
       </section>
-      <section className="grid place-content-center overflow-y-auto mt-44 md:mt-48 pb-10">
+      <section className="grid place-content-center overflow-y-auto mt-56 sm:mt-44 md:mt-48 pb-10">
         {filteredData.map((game) => (
           <Game key={game.id} game={game} />
         ))}
