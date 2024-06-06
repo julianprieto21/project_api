@@ -1,5 +1,5 @@
 import { defineAction, z } from "astro:actions";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const server = {
   signin: defineAction({
