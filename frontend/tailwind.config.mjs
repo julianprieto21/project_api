@@ -5,6 +5,9 @@ export default {
     extend: {
       colors: {
         background: "#242424",
+        steam: "#171d25",
+        epic: "#18181c",
+        xbox: "#107c10",
       },
     },
   },

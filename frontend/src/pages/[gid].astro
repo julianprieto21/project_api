@@ -1,5 +1,7 @@
 ---
+import Price from "../components/Price";
 import Layout from "../layouts/Layout.astro";
+import BackBtn from "../components/icons/BackBtn.astro";
 
 const { gid } = Astro.params;
 const res = await fetch(`http://127.0.0.1:8000/api/games/${gid}`);
@@ -7,5 +9,20 @@ const game = await res.json();
 ---
 
 <Layout title=`Games API | ${game.name}`>
-  <main>{game.name}</main>
+  <main class="flex flex-col justify-start h-screen w-[800px] mx-auto pt-20">
+    <img class="max-w-[800px] rounded-lg" src={game.imageUrl} alt={game.name} />
+    <h1 class="text-3xl font-bold mx-4 mt-4">{game.name}</h1>
+    <div class="flex flex-row flex-wrap mx-5 mt-3 gap-2">
+      {
+        game.genres &&
+          game.genres.map((genre: string) => (
+            <span class="text-md font-light px-2 rounded-xl bg-neutral-500 grid place-items-center">
+              {genre}
+            </span>
+          ))
+      }
+    </div>
+    <Price game={game} client:only="react" />
+    <BackBtn />
+  </main>
 </Layout>
