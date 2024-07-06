@@ -19,7 +19,7 @@ export default function Price({ game }: { game: GameData }) {
       const epicData = await epicRes.json();
       setEpicPrice(epicData.price);
     };
-    fetchPrice();
+    // fetchPrice(); // Desactivado temporalmente
   }, []);
   return (
     <div className="mt-8 w-full gap-4 text-neutral-200 flex flex-col items-center px-4">
@@ -28,8 +28,8 @@ export default function Price({ game }: { game: GameData }) {
         {steamPrice ? (
           <span className="font-light">{steamPrice / 100}$</span>
         ) : (
-          <span className="font-normal text-red-500">
-            No se encuentra disponible
+          <span className="font-medium text-red-500 bg-neutral-200 w-24 rounded-md">
+            0.00$
           </span>
         )}
       </p>
@@ -38,8 +38,8 @@ export default function Price({ game }: { game: GameData }) {
         {epicPrice ? (
           <span className="font-light">{epicPrice / 100}$</span>
         ) : (
-          <span className="font-normal text-red-500">
-            No se encuentra disponible
+          <span className="font-medium text-red-500 bg-neutral-200 w-24 rounded-md">
+            0.00$
           </span>
         )}
       </p>
@@ -48,8 +48,8 @@ export default function Price({ game }: { game: GameData }) {
         {xboxPrice ? (
           <span className="font-light">{xboxPrice / 100}$</span>
         ) : (
-          <span className="font-normal text-red-500">
-            No se encuentra disponible
+          <span className="font-medium text-red-500 bg-neutral-200 w-24 rounded-md">
+            0.00$
           </span>
         )}
       </p>

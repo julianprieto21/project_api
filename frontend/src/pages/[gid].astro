@@ -2,14 +2,19 @@
 import Price from "../components/Price";
 import Layout from "../layouts/Layout.astro";
 import BackBtn from "../components/icons/BackBtn.astro";
+import { Notification } from "../components/Notification";
 
+const api_url = import.meta.env.PUBLIC_DATABASE_URL;
+console.log(api_url);
 const { gid } = Astro.params;
-const res = await fetch(`http://127.0.0.1:8000/api/games/${gid}`);
+const res = await fetch(`${api_url}/api/gamess/${gid}`);
 const game = await res.json();
 ---
 
-<Layout title=`Games API | ${game.name}`>
-  <main class="flex flex-col justify-start h-screen w-[800px] mx-auto pt-20">
+<Layout title=`Gamer Prices | hola`>
+  <main
+    class="relative flex flex-col justify-start h-screen w-[800px] mx-auto pt-20"
+  >
     <img class="max-w-[800px] rounded-lg" src={game.imageUrl} alt={game.name} />
     <h1 class="text-3xl font-bold mx-4 mt-4">{game.name}</h1>
     <div class="flex flex-row flex-wrap mx-5 mt-3 gap-2">
@@ -24,5 +29,6 @@ const game = await res.json();
     </div>
     <Price game={game} client:only="react" />
     <BackBtn />
+    <Notification game={game} client:only="react" />
   </main>
 </Layout>

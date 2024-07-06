@@ -1,10 +1,10 @@
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function seed() {
-  feedSteamGamesData();
+  feedGamesData();
 }
 
-const feedSteamGamesData = async () => {
+const feedGamesData = async () => {
   try {
     const res = await fetch(
       "https://steamspy.com/api.php?request=top100forever"
@@ -32,6 +32,7 @@ const fetchSteamGameData = async (gameId) => {
   const releaseDate = game.release_date.date
     ? new Date(game.release_date.date).toISOString().slice(0, 10)
     : "";
+
   const gameData = {
     name: game.name,
     developers: game.developers,
@@ -44,7 +45,6 @@ const fetchSteamGameData = async (gameId) => {
 };
 
 const postGameData = (data) => {
-  // console.log(data);
   const options = {
     method: "POST",
     headers: {
