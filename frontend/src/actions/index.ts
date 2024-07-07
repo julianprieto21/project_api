@@ -10,14 +10,8 @@ export const server = {
       password: z.string(),
     }),
     handler: async ({ user, email, password }) => {
-      const hashedPass = await bcrypt.hash(
-        password,
-        parseInt(import.meta.env.SALT_ROUNDS)
-      );
-      const hashedEmail = await bcrypt.hash(
-        email,
-        parseInt(import.meta.env.SALT_ROUNDS)
-      );
+      const hashedPass = await bcrypt.hash(password, 10);
+      const hashedEmail = await bcrypt.hash(email, 10);
       const data = {
         name: user,
         email: hashedEmail,
@@ -31,7 +25,8 @@ export const server = {
         },
         body: JSON.stringify(data),
       };
-      fetch(`${import.meta.env.PUBLIC_DATABASE_URL}/api/users`, options)
+      const api_url = "https://clownfish-app-daqok.ondigitalocean.app";
+      fetch(`${api_url}/api/users`, options)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -56,10 +51,8 @@ export const server = {
           accept: "application/ld+json",
         },
       };
-      const response = await fetch(
-        `${import.meta.env.PUBLIC_DATABASE_URL}/api/users`,
-        options
-      );
+      const api_url = "https://clownfish-app-daqok.ondigitalocean.app";
+      const response = await fetch(`${api_url}/api/users`, options);
       const data = await response.json();
       const [userData] = data["hydra:member"].filter((u: { name: string }) => {
         return u.name === user;
