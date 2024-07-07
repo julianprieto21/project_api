@@ -1,9 +1,11 @@
 export async function getGames() {
-  const databaseUrl = import.meta.env.PUBLIC_DATABASE_URL;
+  const apiUrl =
+    import.meta.env.PUBLIC_DATABASE_URL ??
+    "https://clownfish-app-daqok.ondigitalocean.app";
   let gamesData: any[] = [];
   let page = 1;
   const fetchPage = async (page: number) => {
-    const url = `${databaseUrl}/api/games?page=${page}`;
+    const url = `${apiUrl}/api/games?page=${page}`;
     const res = await fetch(url);
     const data = await res.json();
     const games = data["hydra:member"];

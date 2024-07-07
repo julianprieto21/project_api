@@ -8,10 +8,10 @@ import node from "@astrojs/node";
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: "server",
-  experimental: {
-    actions: true
-  },
+  // experimental: {
+  //   actions: true,
+  // },
   adapter: node({
-    mode: "standalone"
-  })
+    mode: "standalone",
+  }),
 });
