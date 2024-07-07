@@ -5,13 +5,13 @@ export async function getGames() {
   let gamesData: any[] = [];
   let page = 1;
   const fetchPage = async (page: number) => {
-    const url = `${apiUrl}/api/games?page=${page}`;
+    const url = `${apiUrl}/api/gamess?page=${page}`;
     const res = await fetch(url);
     const data = await res.json();
     const games = data["hydra:member"];
     gamesData = gamesData.concat(games);
 
-    const currentPage = `/api/games?page=${page}`;
+    const currentPage = `/api/gamess?page=${page}`;
     const lastPage = data["hydra:view"]?.["hydra:last"];
     if (lastPage && lastPage !== currentPage) {
       await fetchPage(page + 1);
