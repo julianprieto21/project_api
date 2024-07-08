@@ -3,6 +3,7 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 import node from "@astrojs/node";
+const HOST = process.env.HOST || 8080;
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
   // },
   adapter: node({
     mode: "standalone",
-    hostname: "0.0.0.0",
+    hostname: HOST,
     port: 8080,
   }),
 });
