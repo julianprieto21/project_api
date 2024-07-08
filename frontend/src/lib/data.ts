@@ -1,7 +1,7 @@
 export async function getGames() {
   const apiUrl =
     import.meta.env.PUBLIC_DATABASE_URL ??
-    "https://clownfish-app-daqok.ondigitalocean.app";
+    "https://jellyfish-app-dwmte.ondigitalocean.app/db";
   let gamesData: any[] = [];
   let page = 1;
   const fetchPage = async (page: number) => {
@@ -12,7 +12,6 @@ export async function getGames() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      mode: "no-cors",
     });
     const data = await res.json();
     const games = data["hydra:member"];
@@ -27,5 +26,6 @@ export async function getGames() {
     }
   };
   await fetchPage(page);
+  console.log(gamesData);
   return gamesData;
 }
