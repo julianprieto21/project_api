@@ -6,13 +6,7 @@ export async function getGames() {
   let page = 1;
   const fetchPage = async (page: number) => {
     const url = `${apiUrl}/api/gamess?page=${page}`;
-    const res = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const res = await fetch(url);
     const data = await res.json();
     const games = data["hydra:member"];
     gamesData = gamesData.concat(games);

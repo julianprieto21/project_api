@@ -8,14 +8,7 @@ const apiUrl =
   import.meta.env.PUBLIC_DATABASE_URL ??
   "https://jellyfish-app-dwmte.ondigitalocean.app/db";
 const { gid } = Astro.params;
-const res = await fetch(`${apiUrl}/api/gamess/${gid}`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-  mode: "no-cors",
-});
+const res = await fetch(`${apiUrl}/api/gamess/${gid}`);
 const game = await res.json();
 ---
 
