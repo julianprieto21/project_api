@@ -20,6 +20,5 @@ export async function getGames() {
     }
   };
   await fetchPage(page);
-  console.log(gamesData);
   return gamesData;
 }
