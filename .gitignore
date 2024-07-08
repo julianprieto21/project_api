@@ -24,6 +24,7 @@ frontend/pnpm-debug.log*
 frontend/pnpm-lock.yaml
 frontend/package-lock.json
 frontend/.vscode
+frontend/.vercel
 
 
 # environment variables
