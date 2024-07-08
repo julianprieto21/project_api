@@ -8,7 +8,14 @@ const apiUrl =
   import.meta.env.PUBLIC_DATABASE_URL ??
   "https://clownfish-app-daqok.ondigitalocean.app";
 const { gid } = Astro.params;
-const res = await fetch(`${apiUrl}/api/gamess/${gid}`);
+const res = await fetch(`${apiUrl}/api/gamess/${gid}`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+  mode: "no-cors",
+});
 const game = await res.json();
 ---
 
