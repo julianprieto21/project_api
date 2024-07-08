@@ -4,9 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import BackBtn from "../components/icons/BackBtn.astro";
 import { Notification } from "../components/Notification";
 
-const apiUrl =
-  import.meta.env.PUBLIC_DATABASE_URL ??
-  "https://jellyfish-app-dwmte.ondigitalocean.app/db";
+const apiUrl = import.meta.env.PUBLIC_DATABASE_URL;
 const { gid } = Astro.params;
 const res = await fetch(`${apiUrl}/api/gamess/${gid}`);
 const game = await res.json();

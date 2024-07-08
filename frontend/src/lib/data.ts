@@ -1,7 +1,5 @@
 export async function getGames() {
-  const apiUrl =
-    import.meta.env.PUBLIC_DATABASE_URL ??
-    "https://jellyfish-app-dwmte.ondigitalocean.app/db";
+  const apiUrl = import.meta.env.PUBLIC_DATABASE_URL;
   let gamesData: any[] = [];
   let page = 1;
   const fetchPage = async (page: number) => {
